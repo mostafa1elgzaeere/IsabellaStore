@@ -1,0 +1,28 @@
+
+def home(request,categorey_choice=None):
+    categories = Categorey.object.all()
+    products   = Products.objects.filter(active=True)
+    current_category = None
+
+    categorey_choice!= None:
+        current_category = Categorey.objects.get(name=current_category)
+    #1  products = Products.objects.filter(categorey=current_category,active=True)
+    #2  products = current_category.products.filter(active=True)    
+
+
+
+    return render(request,'home.html',{"categories":categories,"products":products})
+
+
+
+
+
+def product_details(request,product_title):
+    product = products.objects.get(title=product_title)
+    return render(request,'product_title.html',{"product":product})
+
+
+
+
+
+

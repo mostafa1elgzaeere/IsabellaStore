@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div id="page-content">
+    <!--MainContent-->
+    <div id="MainContent" class="main-content" role="main">
+
+        
+        <div id="ProductSection-product-template" class="product-template__container prstyle2 container mt-5">
+            <!--#ProductSection-product-template-->
+            <div class="product-single product-single-1">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="product-details-img product-single__photos bottom">
+                            <div class="zoompro-wrap product-zoom-right pl-20">
+                                <div class="zoompro-span">
+
+                                    <img class="blur-up lazyload zoompro ml-5"  height="300" alt="" src="{{ product.image.url }}" />               
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 ">
+                        <div class="product-single__meta">
+                            <h1 class="product-single__title">{{product.title}}</h1>
+
+                            <p class="product-single__price product-single__price-product-template">
+                                <span class="visually-hidden">Regular price</span>
+                                <s id="ComparePrice-product-template"><span class="money">$900.00</span></s>
+                                <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
+                                    <span id="ProductPrice-product-template"><span class="money">{{product.price}}</span></span>
+                                </span>
+                                <span class="discount-badge"> <span class="devider">|</span>&nbsp;
+                                    <span>You Save</span>
+                                    <span id="SaveAmount-product-template" class="product-single__save-amount">
+                                    <span class="money">$100.00</span>
+                                    </span>
+                                    <span class="off">(<span>16</span>%)</span>
+                                </span>  
+                            </p>
+                        <div class="product-single__description rte">
+                            <h6> Description :</h6>
+                            <p>{{product.description}}</p>
+                        </div>
+                        <form class="mt-4 w-100" action="{% url 'add_in_cart' product.id %}"  method="POST" >
+                            {% csrf_token %}
+                           {{form}}
+                           <button class="btn btn-addto-cart w-100 mt-1 p-3" type="submit">Add To Cart</button>
+                        </form>
+
+                    
+                    </div>
+
+
+                </div>
+            <!--End-product-single-->
+
+
+            <!--#ProductSection-product-template-->
+        </div>
+    <!--MainContent-->
+</div>
+
+</div>
+{% endblock content %}
+

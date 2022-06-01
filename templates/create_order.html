@@ -1,0 +1,99 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+
+{% block content %}
+
+
+    <div id="page-content">
+    	<!--Page Title-->
+    	<div class="page section-header text-center">
+			<div class="page-title">
+        		<div class="wrapper"><h1 class="page-width">Checkout</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->
+        
+        <div class="container">
+        	<div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <div class="customer-box returning-customer">
+                        <h3><i class="icon anm anm-user-al"></i> Submit Your Data To Deliver Your Product</h3>
+
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <div class="customer-box returning-customer cart">
+                        <h3 class="font-15 xs-font-13"><i class="icon anm anm-cart-l"></i>Your Cart Have : </h3>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row billing-fields">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
+                    <div class="create-ac-content bg-light-gray padding-20px-all">
+                            <h2> BILLING DETAILS  </h2>
+                            <form action="" method="POST" class="from mt-3">
+                                {{form|crispy}}
+                                {% csrf_token %}
+                                <input class="btn btn-primary w-100" type="submit" value="Save">
+                            </form>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="your-order-payment">
+                        <div class="your-order">
+                            <h2 class="order-title mb-4">Your Order</h2>
+
+                            <div class="table-responsive-sm order-table"> 
+                                <table class="bg-white table table-bordered table-hover text-center">
+                                    <thead>
+
+                                        <tr>
+                                            <th class="text-left">Product Name</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in cart  %}
+                                        {% with item.product as product %}
+                                        <tr>
+                                            <td class="text-left">{{item.product}}</td>
+                                            <td>{{product.price}}</td>
+                                            <td>{{item.quantity}}</td>
+                                            <td>{{item.total_price}}</td>
+                                        </tr>
+
+                                        {% endwith %}
+
+                                        {% endfor %}                                 
+                                         </tbody>
+
+
+
+                                    <tfoot class="font-weight-600">
+                                        <tr>
+                                            <td colspan="4" class="text-right">Total</td>
+                                            <td>{{cart.total_price}}</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <hr />
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    {% endblock content %}       

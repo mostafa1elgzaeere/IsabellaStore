@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    
+    <div id="page-content">
+    	<!--Page Title-->
+    	<div class="page section-header text-center">
+			<div class="page-title">
+        		<div class="wrapper"><h1 class="page-width">Your cart</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->
+        
+        <div class="container">
+        	<div class="row">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+                	<form action="#" method="post">
+                		<table>
+                            <thead class="cart__row cart__header">
+                                <tr>
+                                    <th colspan="2" class="text-center">Products</th>
+                                    <th class="text-center cart__price-wrapper">Price</th>
+                                    <th class="text-center quantity">Quantity</th>
+                                    <th class="text-center quantity">Total</th>
+                                    <th class="text-center quantity">Action</th>
+                                </tr>
+                            </thead>
+                    		<tbody>
+
+                                {% for item in cart %}
+                                {% with item.product as product %}
+                      
+                                <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                    <td class="cart__image-wrapper cart-flex-item">
+                                        <a href={% url 'product_choice' product.categorey product.id  %}><img class="cart__image" src="{{ product.image.url }}" alt="Elastic Waist Dress - Navy / Small"></a>
+                                    </td>
+                                    <td class="cart__meta small--text-center cart-flex-item ">
+                                        <div class="list-view-item__title quantity">
+                                            <a href={% url 'product_choice' product.categorey product.id  %}>{{product.title}} </a>
+                                        </div>
+                                        
+                                    </td>
+                                    <td class="pl-3 text-center">
+                                        <span class="money">{{product.price}} $</span>
+                                    </td>
+
+
+                                    <td class="text-center pl-5 small--hide">
+                                            {{ item.quantity }}
+                                    </td>
+
+
+                                    <td class="text-center small--hide quantity">
+                                        <div><span class="money">{{item.total_price}} </span></div>
+                                    </td>
+                                    
+                                    <td class="remove remove_cart text-center">
+                                        <form action="{% url 'remove_from_cart' product.id %}" method="POST">
+                                            {% csrf_token %}
+                                            {{form.label_tag}}
+                                            <input type="submit" class="btn"  value="&#10008;">
+                                        </form>
+                                    </td>
+                                    
+
+
+                                </tr>
+                                
+      {% endwith %}
+
+      {% endfor %}   
+     
+
+                            </tbody>
+                            
+
+                    </table>
+                    
+                    <hr>
+
+                    
+                    </form>                   
+               	</div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
+
+                    <div class="solid-border">
+                      <div class="row">
+                      	<span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">{{cart.total_price}} $</span></span>
+                      </div>
+                      <a href="{% url 'create_order' %} " class="btn btn--small-wide checkout">Check Out </a>
+
+                      <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div>
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    {% endblock content %}       

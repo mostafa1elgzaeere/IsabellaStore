@@ -1,0 +1,139 @@
+
+    <!--Header-->
+    <div class="header-wrap animated d-flex">
+    	<div class="container-fluid">        
+            <div class="row align-items-center">
+            	<!--Desktop Logo-->
+                <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+                    <a href="{% url 'home' %}">
+                    <h2> Isa <span style="color:#11998e">blla </span> Store</h2>
+                    </a>
+                </div>
+                <!--End Desktop Logo-->
+                <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+                	<div class="d-block d-lg-none">
+                        <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                        	<i class="icon anm anm-times-l"></i>
+                            <i class="anm anm-bars-r"></i>
+                        </button>
+                    </div>
+                	<!--Desktop Menu-->
+                	<nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
+                        <ul id="siteNav" class="site-nav medium center hidearrow">
+                            <li class="lvl1 parent megamenu"><a href="{% url 'home' %}">Home</i></a>
+                            </li>
+                            <li class="lvl1 parent megamenu"><a href="{% url 'contact' %}">Contact Us</i></a>
+                            </li>
+                        <li class="lvl1 parent megamenu"><a href="{% url 'about' %}">About Us</i></a>
+                        </li>
+
+                            <li><a href="{% url 'faqs' %}" class="site-nav">FaQs</a></li>
+                          </ul>
+
+                      </ul>
+                    </nav>
+                    <!--End Desktop Menu-->
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo ">
+                	<div class="logo">
+                        <a href="{% url 'home' %}">
+                            <h2> Isa<span style="color:#11998e">blla</span> Store</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-3 col-md-3 col-lg-2">
+                	<div class="site-cart">
+                    	<a href="{% url 'cart_detail' %}" class="site-header__cart" title="Cart">
+                        	<i class="icon anm anm-bag-l"></i>
+                            <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">{{cart|length}}</span>
+                        </a>
+
+
+
+
+                        <!--Minicart Popup-->
+                        <div id="header-cart" class="block block-cart">
+                        	<ul class="mini-products-list">
+                                {% for item in cart %}
+                                {% with item.product as product %}
+
+
+                                <li class="item">
+                                	<a class="product-image" href="#">
+                                    	<img src="{{ product.image.url }}" alt="Elastic Waist Dress - Black / Small" title="" />
+                                    </a>
+
+                                    <div class="product-details">
+                                     <form action="{% url 'remove_from_cart' product.id %}" method="POST">
+                                            {% csrf_token %}
+                                            {{form.label_tag}}
+                                            <input type="submit" class="btn-white float-right w-25 color-dark"   value="&#10008;">
+                                        </form>
+
+                                        <a class="pName" href="cart.html">{{product.title}}</a>
+
+                                       	<div class="priceRow">
+                                            <div class="product-price">
+                                                <span class="money">{{product.price}} $</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+      {% endwith %}
+
+      {% endfor %}   
+
+                            </ul>
+                            <div class="total">
+                            	<div class="total-in">
+                                	<span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">{{cart.total_price}}</span></span>
+                                </div>
+                                 <div class="buttonSet text-center">
+                                    <a href="{% url 'cart_detail' %}" class="btn btn-secondary btn--small">View Cart</a>
+                                    <a href="{% url 'create_order' %}" class="btn btn-secondary btn--small">Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Minicart Popup-->
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!--End Header-->
+
+
+
+    
+    <!--Mobile Menu-->
+    <div class="mobile-nav-wrapper" role="navigation">
+        <ul id="MobileNav" class="mobile-nav">
+        	<li class="lvl1 parent megamenu"><a href="{% url 'home' %}">Home </a>
+        </li>
+        	<li class="lvl1 parent megamenu"><a href="{% url 'contact' %}">Contact Us </a>
+        </li>
+        	<li class="lvl1 parent megamenu"><a href="{% url 'about' %}">About Us </a>
+
+        </li>
+        	<li class="lvl1 parent megamenu"><a href="{% url 'faqs' %}">FaQs </a>
+    
+       </li>
+                 </ul>
+           
+
+       
+	</div>
+	<!--End Mobile Menu-->

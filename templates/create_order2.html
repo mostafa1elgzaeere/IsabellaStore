@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+   {% load crispy_forms_tags %} 
+{% block title %}
+    {% if current_categorey %}
+    {{block.super}}/Create Order{{current_categorey.name}}
+    {% else %}
+    {{block.super}}/Create Order
+    {% endif %}
+
+{% endblock title %}
+ 
+ 
+ 
+
+    
+
+{% block content %}
+
+  <div class="container mt-5">
+
+    <div class="order">
+
+      <div>
+          <form action="" method="POST" class="form from">
+                {{form|crispy}}
+                {% csrf_token %}
+                <input class="btn btn-primary" type="submit" value="Save">
+            </form>
+
+       </div>
+
+      <div class="cart_data">
+            <div class="jumbotron ml-2  mt-3">
+                <h6>Your Cart </h6>
+                <hr class="my-2">
+               <ul>
+                   {% for item in cart  %}
+                  <li> {{item.quantity}} X {{item.product}}  = {{item.quantity}}$ </li>
+                   {% endfor %}
+               </ul>
+
+               <p>Total : {{cart.total_price}}$ </p>
+            
+            </div>
+    </div>
+
+    </div>
+</div>
+{% endblock content %}
+ <!--start submit order-->
+
+
+
+ <!--end submit order-->
+
+
+
+
+

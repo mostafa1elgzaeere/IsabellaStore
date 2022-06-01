@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!--Body Content-->
+    <div id="page-content">
+    
+    	<!--Collection Banner-->
+    	<div class="collection-header">
+			<div class="collection-hero">
+        		<div class="collection-hero__image"><img class="blur-up lazyload" data-src="/static/images/cat-women1.jpg" src="/static/images/cat-women1.jpg" alt="Women" title="Women" /></div>
+        		<div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width"> {{current_cat}} Products </h1></div>
+      		</div>
+		</div>
+        <!--End Collection Banner-->
+        
+        <div class="container mt-3">
+        	<div class="row">
+
+                <!--Main Content-->
+                
+                <div class="col-12 col-sm-12 col-md-9 col-lg-12 main-col">
+                
+                	<div class="productList mt-5" style="min-height:900px">
+                        
+                        <div class="grid-products grid--view-items product-load-more">
+                            <div class="row">
+                            
+                                {% for product in products  %}
+                                
+                                {% comment %} <div class="col-6 col-sm-6 col-md-4 col-lg-3 "> {% endcomment %}
+                                    {% comment %} <!-- start product image -->
+                                    <div class="product-image">
+                                        <!-- start product image -->
+                                        <a href="#">
+                                            <!-- image -->
+
+                                            <img height="100%" class="primary blur-up lazyload" data-src="{{ product.image.url }}" src="{{ product.image.url }}" alt="image" title="product">
+                                            <!-- End image -->
+                                          
+                                        </a>
+                                        <!-- end product image -->
+                                        <div class="product-details text-center">
+                                            <!-- product name -->
+                                            <div class="product-name">
+                                                <a href="#">{{product.title}}</a>
+                                            </div>
+                                            <!-- End product title -->
+                                            <!-- product price -->
+                                            <div class="product-price" >
+                                                <a href="#" style="color:red">{{product.price}}$</a>
+                                                <p>{{product.description|truncatewords:8}} </p>
+                                            </div>
+                                        </div>
+                                        <!-- Start product button -->
+                                        <form class="variants add"   method="POST" style="width:88%;margin-left:4%;top:-30%;position:relative;">
+                                            {% csrf_token %}
+                                           {{form}}
+                                           <button class="btn btn-addto-cart" type="button">Add To Cart</button>
+                                        </form>
+
+                                        <!-- end product button -->
+                                    </div>
+                                    <!-- end product image --> {% endcomment %}
+
+                                    <div class="card col-6 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;">
+                                        <a class="go_to" href={% url 'product_choice' current_cat product.id  %}> 
+                                        <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                                        </a>
+                                        <div class="card-body">
+                                          <h5 class="card-title">{{product.title}}</h5>
+                                          <a href="#" class="card-price" style="color:red">{{product.price}}$</a>
+
+                                          <p class="card-text">{{product.description|truncatewords:8}}</p>
+                                          <form class="form w-100" action="{% url 'add_in_cart' product.id %}"  method="POST" >
+                                            {% csrf_token %}
+                                           {{form}}
+                                           <button class="btn btn-addto-cart w-100 mt-1" type="submit">Add To Cart</button>
+                                        </form>
+                                        </div>
+                                      </div>
+                                {% comment %} </div> {% endcomment %}
+                                
+                                {% endfor %}
+
+
+                                
+
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="infinitpaginOuter d-flex justify-content-center">
+                        <div class="infinitpagin">	
+                            <div class="pagination">
+                                <span class="step-links">
+                                    {% if products.has_previous %}
+                                        <a class="btn" href="?page={{ products.previous_page_number }}" >previous</a>
+                                    {% endif %}
+                            
+                                    <span class="current">
+                                        <span style="color: black">Page</span> <span style="color: #339498;"> {{ products.number }}</span> <span style="color: black">of</span>   <span style="color: black;">{{ products.paginator.num_pages }}</span>
+                                    </span>
+                            
+                                    {% if products.has_next %}
+                                        <a  class="btn"  href="?page={{ products.next_page_number }}">next</a>
+                                    {% endif %}
+                                </span>
+                            </div>
+                                                    </div>
+                    </div>
+                </div>
+                <!--End Main Content-->
+
+            </div>
+        </div>
+        
+    </div>
+
+    {% endblock content %}   
+
+</div>
+</body>
+
+<!-- belle/shop-right-sidebar.html   11 Nov 2019 12:39:02 GMT -->
+</html>

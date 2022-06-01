@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="page-content">
+    <!--Page Title-->
+    <div class="page section-header text-center">
+        <div class="page-title">
+            <div class="wrapper"><h1 class="page-width">Your cart</h1></div>
+          </div>
+    </div>
+    <!--End Page Title-->
+    
+
+<div class="container" style="min-height: 500px;">
+
+
+
+
+ {% for item in cart %}
+          {% with item.product as product %}
+
+
+    <div class="row d-flex mt-5" style="justify-content: space-between; border-bottom: 1px solid black;">
+        <img src="{{product.image.url}}" width="13%" alt="">
+        <div class="name">{{product.name}}</div>
+        <div class="quantity">
+                  <form action="{% url "add_in_cart" product.id %}" method="post">
+                      {{ item.update_quantity_form.quantity }}
+                      <input type="submit" value="Update" id="update">
+                      {% csrf_token %}
+                  </form>
+        </div>
+        <div class="price">Unit price {{product.price}} $  </div>
+        <div class="product_total_price">Total  {{item.total_price}} $  </div>
+
+
+
+             <form action="{% url 'remove_from_cart' product.id %}" method="POST">
+                {% csrf_token %}
+                  {{form.label_tag}}
+                  <input type="submit" value="Remove">
+             </form> 
+        
+
+        </div>
+
+      {% endwith %}
+
+ {% endfor %}   
+
+
+    <div class="finish d-flex mt-5" style="justify-content: space-between;">
+        <div class="total_price">
+            <h3>Total price :{{cart.total_price}} $ </h3>
+        </div>
+
+        <div class="exit">
+            <a href="{% url 'home' %}" class="btn btn-primary">Contienu Shopping </a>
+            <a href="{% url 'create_order' %} " class="btn btn-success">Check Out </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!--end products-->
+
+ {% endblock content %}   
+
+
+ 

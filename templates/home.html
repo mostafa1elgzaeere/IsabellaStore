@@ -1,0 +1,139 @@
+
+{% extends 'base.html' %}
+
+ 
+
+ 
+
+ {% block content %}
+ 
+
+     <!--Body Content-->
+    <div id="page-content">
+    	<!--Home slider-->
+    	<div class="slideshow slideshow-wrapper pb-section">
+        	<div class="home-slideshow">
+            	<div class="slide">
+                	<div class="blur-up lazyload">
+                        <img class="blur-up lazyload" data-src="../static/images/home3-banner.jpg" src="../static/images/home3-banner.jpg" alt="Summer Hot Collection" title="Summer Hot Collection" />
+                        <div class="slideshow__text-wrap slideshow__overlay classic middle">
+                            <div class="slideshow__text-content middle">
+                                <div class="wrap-caption right">
+                                    <h2 class="h1 mega-title slideshow__title">Summer Hot Collection</h2>
+                                    <span class="mega-subtitle slideshow__subtitle">SALE up to 30% off</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--End Home slider-->
+        
+        
+        <!--Image Banners-->
+    	<div class="section imgBanners pb-0">
+        	<div class="imgBnrOuter">
+            	<div class="container-fluid">
+                	<div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="section-header text-center">
+                                <h2 class="h2">SHOP BY Category</h2>
+                                <p>Shop the Nicest Deals on Best Prices in all category</p>
+                            </div>
+                            
+                        </div>
+                    </div>    
+                	<div class="row img-grid-banner1">
+                    	<div class="col-12 col-sm-12 col-md-12 col-lg-6 image-banner-1">
+                        	<div class="inner topright">
+                            	<a href="{% url 'products' 'bag' %}">	
+                               		<img data-src="../static/images/home3-small-banner2.jpg"  src="../static/images/home3-small-banner2.jpg"  class="blur-up lazyload" />
+                                    <div class="ttl">
+                                    	Shop <h5>Bags Products </h5>
+                                    </div>
+                                </a>
+                             </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 image-banner-2">
+                        	<div class="row">
+                            	<div class="col-12 col-sm-6 col-md-6 col-lg-6 image-banner-3">
+                                	<div class="inner topright">
+                                        <a href="{% url 'products' 'shoes' %}">	
+                                            <img data-src="../static/images/pexels-ray-piedra-1464625.jpg" src="../static/images/pexels-ray-piedra-1464625.jpg"   class="blur-up lazyload" />
+                                            <div class="ttl">
+                                                Shop <h5>Shoes Products</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                            	</div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 ">
+                                	<div class="inner btmleft">
+                                        <a href="{% url 'products' 'sunglass' %}">	
+                                            <img data-src="../static/images/pexels-ruslan-khmelevsky-7732632.jpg" src="../static/images/pexels-ruslan-khmelevsky-7732632.jpg"  class="blur-up lazyload" />
+                                            <div class="ttl">
+                                                Shop Cool <h5>Sunglass</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                            	</div>   
+                            </div>
+                            <div class="row">
+                            	<div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                	<div class="inner center">
+                                        <a href="{% url 'products' 'summer_collection' %}">	
+                                            <img data-src="../static/images/collection/home11-grid-sm-banner4.jpg" src="../static/images/collection/home11-grid-sm-banner4.jpg"  class="blur-up lazyload" />
+                                            <div class="ttl">
+                                                Hot Summer Collection <h5>Sun Glasses, Shoes and more</h5>
+                                            </div>
+                                        </a>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row img-grid-banner2">
+                    	<div class="col-12 col-sm-12 col-md-12 col-lg-5">
+                            <div class="inner topleft">
+                            	<a href="{% url 'products' 'jewelry' %}">	
+                                    <img data-src="../static/images/collection/home11-grid-sm-banner5.jpg" src="../static/images/collection/home11-grid-sm-banner5.jpg" class="blur-up lazyload" />
+                                    <div class="ttl">
+                                        All the Shiniest <h5>Shop Jewelry</h5>
+                                    </div>
+                                </a>
+                             </div>
+                         
+                            <div class="inner topright">
+                            	<a href="{% url 'products' 'cosmetics' %}">	
+                                    <img data-src="../static/images/collection/home11-grid-sm-banner6.jpg" src="../static/images/collection/home11-grid-sm-banner6.jpg"  class="blur-up lazyload" />
+                                    <div class="ttl">
+                                        Every Little Things <h5>Shop Cosmetics</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-7 image-banner-2">
+                            <div class="inner topleft">
+                            	<a href="{% url 'products' 'sports' %}">	
+                                    <img data-src="../static/images/pexels-karolina-grabowska-4498220.jpg" src="../static/images/pexels-karolina-grabowska-4498220.jpg"  class="blur-up lazyload" />
+                                    <div class="ttl">
+                                        Elevate Every Look <h5>Shop Sports Clothing</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Image Banners-->
+        
+    </div>
+    <!--End Body Content-->
+    
+
+ {% endblock content %}   
+
+
+ 

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+ 
+
+ 
+
+ {% block content %}
+    
+    <div id="page-content">
+    	<!--Page Title-->
+    	<div class="page section-header text-center mt-5">
+			<div class="page-title">
+        		<div class="wrapper"><h1 class="page-width">About Us</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->
+        
+        <div class="container mt-5">
+        	<div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                	<div class="text-center mb-4">
+                        <h2 class="h2">{{data.header_one}}</h2>
+                        <div class="rte-setting">
+                            <p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></p>
+                            <p>{{data.content_one}}</p>
+                        </div>
+                    </div>
+               	</div>
+            </div>
+            <hr />
+            	            
+            
+           
+            <div class="row mt-5">
+            	<div class="col-12">
+                    <h2>{{data.header_two}}</h2>
+                    <p>{{data.content_two}}</p>
+                </div>
+            </div>
+
+            
+        </div>
+        
+    </div>
+    <!--End Body Content-->
+   
+
+    
+    {% endblock content %}       

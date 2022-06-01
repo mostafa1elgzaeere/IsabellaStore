@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+   {% load crispy_forms_tags %} 
+{% block title %}
+    {% if current_categorey %}
+    {{block.super}}/Create Order{{current_categorey.name}}
+    {% else %}
+    {{block.super}}/Create Order
+    {% endif %}
+
+{% endblock title %}
+ 
+ 
+ 
+
+    
+
+{% block content %}
+
+    <div class="order_done">
+        <div class="container jumbotron mt-5">
+            <h3>We thank you for doing business with us .. We will deliver your order as soon as possible </h3>
+            <a href="{% url 'home' %}" class="btn btn-primary mt-5">Continu Shoping</a>
+            </div>
+    </div>
+
+{% endblock content %}
+
+
+
